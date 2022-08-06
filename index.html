@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <title>RSA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Raleway"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+
+  <style>
+    body,
+    h1 {
+      font-family: "Raleway", Arial, sans-serif;
+    }
+
+    h1 {
+      letter-spacing: 6px;
+    }
+
+    .w3-row-padding img {
+      margin-bottom: 12px;
+    }
+  </style>
+
+  <body>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-content" style="max-width: 1500px">
+      <!-- Header -->
+      <header class="w3-panel w3-center w3-opacity" style="padding: 128px 16px">
+        <h1 class="w3-xlarge">Encriptador</h1>
+      </header>
+
+      <div class="w3-row-padding" style="margin-bottom: 128px">
+        <div class="w3-center">
+          <br />Texto a encriptar:<input id="encriptar" type="text" value="gato" />
+
+          <br />Texto a desencriptar:<input id="desencriptar" type="text" value="gaitober" />
+
+          <br /><button onclick="encrypt()">Encriptar</button>
+
+          <br />Texto encriptado:<br /><span id="resultado_encriptado"></span>
+
+          
+
+          <br /><button onclick="decrypt()">Desencriptar</button>
+          <br />Texto desencriptado:<br /><span id="resultado_desencriptado"></span>
+        </div>
+      </div>
+
+      <!-- End Page Content -->
+    </div>
+  </body>
+  <script>
+
+
+    function encrypt(){
+    var texto = document.getElementById("encriptar").value;
+    var new_text = "";
+    let spliting = texto.split("");
+    
+        for(let value of spliting){
+            if(value == "a"){
+                new_text += "ai";
+                continue;
+            }
+            if(value == "e"){
+                new_text += "enter";
+                continue;
+            }
+            if(value == "i"){
+                new_text += "imes";
+                continue;
+            }
+            if(value == "o"){
+                new_text += "ober";
+                continue;
+            }
+            if(value == "u"){
+                new_text += "ufat";
+                continue;
+            }
+            new_text += value;
+        }
+        document.getElementById("resultado_encriptado").innerHTML = new_text;
+        document.getElementById("resultado_desencriptado").innerHTML = '';
+    }        
+
+    function decrypt(){
+    var texto = document.getElementById("desencriptar").value;
+
+    
+        
+        let reg_a = /ai/ig;
+        let result_a=texto.replace(reg_a, "a");
+
+        let reg_e = /enter/ig;
+        let result_e=result_a.replace(reg_e, "e");
+
+        let reg_i = /imes/ig;
+        let result_i=result_e.replace(reg_i, "i");
+
+        let reg_o = /ober/ig;
+        let result_o=result_i.replace(reg_o, "o");
+
+        let reg_u = /ufat/ig;
+        let result_u=result_o.replace(reg_u, "u");
+
+
+        document.getElementById("resultado_encriptado").innerHTML = "";
+        document.getElementById("resultado_desencriptado").innerHTML = result_u;
+    }        
+         
+    
+    </script>
+</html>
